@@ -1,9 +1,13 @@
 package com.exalow.main.core;
 
 import com.exalow.main.entities.*;
+import com.exalow.main.event.Event;
+import com.exalow.main.event.EventManager;
 import com.exalow.main.utils.*;
 import com.exalow.main.roles.*;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Game {
@@ -27,7 +31,9 @@ public class Game {
         }
     }
 
-    public void removePlayer(Player player) {
+    public void removePlayer(Player player, String day, String reason) {
+        final DateFormat df = new SimpleDateFormat("hh:mm:ss");
+        this.manager.addEvent(new Event(df.format(new Date()), day, player, reason));
         this.playerList.remove(player);
     }
 
