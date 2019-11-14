@@ -9,6 +9,11 @@ import java.util.*;
 public class Game {
 
     private List<Player> playerList = new LinkedList<>();
+    private EventManager manager;
+
+    public Game(EventManager manager) {
+       this.manager = manager;
+    }
 
     public void load() {
 

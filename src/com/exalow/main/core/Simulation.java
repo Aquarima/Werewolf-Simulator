@@ -1,16 +1,18 @@
-package com.exalow.main.core;
+﻿package com.exalow.main.core;
 
 import com.exalow.main.event.EventManager;
 import com.exalow.main.utils.Time;
 
 public class Simulation {
 
-    private EventManager manager = new EventManager();
-    private Game game = new Game();
+    private EventManager manager;
+    private Game game;
     private Time time;
     private int cycle;
 
     public Simulation() {
+        this.manager = new EventManager();
+        this.game new Game(manager);
         this.time = new Time(game);
         game.load();
     }
