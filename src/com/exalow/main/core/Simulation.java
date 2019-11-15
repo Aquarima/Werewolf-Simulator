@@ -1,39 +1,47 @@
-﻿package com.exalow.main.core;
+package com.exalow.main.core;
 
+import com.exalow.main.entities.Player;
 import com.exalow.main.event.Event;
 import com.exalow.main.event.EventManager;
-import com.exalow.main.utils.Time;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.List;
 
 public class Simulation {
 
     private EventManager manager = new EventManager();
-    private Game game;
-    private Time time;
+    private Game game = new Game();
     private int cycle;
-
-    public Simulation() {
-        this.game = new Game(manager);
-        game.load();
-        this.time = new Time(game);
-    }
+    private String day;
 
     public void start() {
+
+        game.load();
+
         while (!game.hasWinner()) {
-            time.onDay(cycle);
-            time.onNight(cycle);
+            day();
+            night();
+            game.removePlayer(manager, game.getRandomPlayer(), day, "killed by village !");
             cycle++;
         }
         stop();
     }
 
+    public void day() {
+        System.out.println(day = "[JOUR " + cycle + "]");
+
+        for (Event event : manager.getLastDeaths("[NUIT " + (cycle - 1) + "]")) {
+            event.getPlayer().printDeathMessage();
+        }
+    }
+
+    public void night() {
+        System.out.println(day = "[NUIT " + cycle + "]");
+    }
+
     private void stop() {
-        final DateFormat df = new SimpleDateFormat("hh:mm:ss");
-        System.out.println("\nL'équipe " + game.getWinner() + " a gagnée !");
-        this.manager.addEvent(new Event(df.format(new Date()), game.getWinner()));
+        System.out.println("\n[INFO] L'équipe " + game.getWinner() + " a gagnée !");
+        this.manager.addEvent(new Event(day, game.getWinner()));
+        this.manager.writeElements();
     }
 
 }

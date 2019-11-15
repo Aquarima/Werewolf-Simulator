@@ -20,7 +20,7 @@ public class SaveLoader {
 
         if ((scan.nextBoolean())) {
             if (file.exists()) {
-                System.out.println("\n[!] Chargement de la sauvegarde...");
+                System.out.println("\n[!] Chargement de la sauvegarde...\n");
                 return gson.fromJson(FileUtils.loadContent(file), Map.class);
             }
             System.err.println("\n[!] Aucune sauvegarde n'est disponible !");
@@ -28,7 +28,7 @@ public class SaveLoader {
 
         FileUtils.saveContent(file, false, gson.toJson(userSelection()));
 
-        System.out.println("\n[!] Chargement de la sauvegarde...");
+        System.out.println("\n[!] Chargement de la sauvegarde...\n");
         return gson.fromJson(FileUtils.loadContent(file), Map.class);
     }
 

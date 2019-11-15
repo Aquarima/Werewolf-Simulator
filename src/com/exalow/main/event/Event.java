@@ -5,26 +5,20 @@ import com.exalow.main.entities.Team;
 
 public class Event {
 
-    private String time;
     private String day;
     private String reason;
     private Player player;
     private Team team;
 
-    public Event(String time, String day, Player player, String reason) {
-        this.time = time;
+    public Event(String day, Player player, String reason) {
         this.day = day;
         this.player = player;
         this.reason = reason;
     }
 
-    public Event(String time, Team team) {
-        this.time = time;
+    public Event(String day,Team team) {
+        this.day = day;
         this.team = team;
-    }
-
-    public String getTime() {
-        return time;
     }
 
     public String getDay() {
@@ -41,7 +35,7 @@ public class Event {
 
     @Override
     public String toString() {
-        if (team != null) return "[" + time + "] Victoire de l'équipe " + team + " !";
-        return "[" + time + "] " + day + " " + player.getName() + " (" + player.getRoleName() + ") " + reason;
+        if (team != null) return day + " Victoire de l'équipe " + team + " !";
+        return  day + " " + player.getName() + " (" + player.getRoleName() + ") " + reason;
     }
 }

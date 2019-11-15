@@ -4,10 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,18 +24,16 @@ public class EventManager {
 
     public void writeElements() {
 
-        DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-        String date = "(" + df.format(new Date()) + ")";
-
         try {
 
-            final BufferedWriter writer = new BufferedWriter(new FileWriter(new File("src/games/" + date)));
+            final File[] files = new File("src/logs/").listFiles();
+            final BufferedWriter writer = new BufferedWriter(new FileWriter(new File("src/logs/game " + (files.length + 1) )));
 
-            for (Event event :listeners) {
+            for (Event event : listeners) {
                 writer.write(event.toString());
+                writer.write("\n");
             }
 
-            writer.flush();
             writer.close();
 
         } catch (IOException e) {

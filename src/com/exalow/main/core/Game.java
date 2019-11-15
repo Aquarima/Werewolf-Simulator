@@ -13,11 +13,6 @@ import java.util.*;
 public class Game {
 
     private List<Player> playerList = new LinkedList<>();
-    private EventManager manager;
-
-    public Game(EventManager manager) {
-       this.manager = manager;
-    }
 
     public void load() {
 
@@ -31,34 +26,25 @@ public class Game {
         }
     }
 
-    public void removePlayer(Player player, String day, String reason) {
-        final DateFormat df = new SimpleDateFormat("hh:mm:ss");
-        this.manager.addEvent(new Event(df.format(new Date()), day, player, reason));
+    public void removePlayer(EventManager manager, Player player, String day, String reason) {
+        manager.addEvent(new Event(day, player, reason));
         this.playerList.remove(player);
     }
 
-    public long getNumberOfVillager() {
+    public long countVillagers() {
         return playerList.stream()
                 .filter((x) -> x.getTeam() == Team.VILLAGE)
                 .count();
     }
 
-    public long getNumberOfWolf() {
+    public long countWerewolves() {
         return playerList.stream()
                 .filter((x) -> x.getTeam() == Team.WEREWOLVES)
                 .count();
     }
 
-    public Player getRandomPlayer() {
-        return playerList.get(new Random().nextInt(playerList.size()));
-    }
-
     public boolean hasWinner() {
-        return getNumberOfVillager() == 0 || getNumberOfWolf() == 0;
-    }
-
-    public Team getWinner() {
-        return playerList.get(0).getTeam();
+        return countVillagers() == 0 || countWerewolves() == 0;
     }
 
     private Role getClassInstanceOf(String role) {
@@ -72,4 +58,11 @@ public class Game {
         }
     }
 
+    public Player getRandomPlayer() {
+        return playerList.get(new Random().nextInt(playerList.size()));
+    }
+
+    public Team getWinner() {
+        return playerList.get(0).getTeam();
+    }
 }
