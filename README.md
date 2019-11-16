@@ -1,1 +1,2 @@
-# Werewolf
+Description 
+A Werewolf Game simulator.
