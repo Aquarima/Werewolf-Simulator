@@ -20,7 +20,6 @@ public class Simulation {
         while (!game.hasWinner()) {
             day();
             night();
-            game.removePlayer(manager, game.getRandomPlayer(), day, "killed by village !");
             cycle++;
         }
         stop();
