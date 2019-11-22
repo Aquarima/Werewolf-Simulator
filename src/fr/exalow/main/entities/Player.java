@@ -13,11 +13,11 @@ public class Player {
     }
 
     public void vote() {
-
+        this.role.vote();
     }
 
     public void useAbility() {
-
+        this.role.useAbility();
     }
 
     public String getName() {
@@ -29,6 +29,6 @@ public class Player {
     }
 
     public Team getTeam() {
-        return role.getTeam();
+        return this.role.getTeam();
     }
 }

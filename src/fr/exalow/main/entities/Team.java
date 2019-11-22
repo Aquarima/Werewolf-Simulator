@@ -1,4 +1,5 @@
 package fr.exalow.main.entities;
 
-public class Team {
+public enum Team {
+    VILLAGE, WOLVES;
 }
