@@ -1,8 +1,11 @@
 package fr.exalow.main.core;
 
+import fr.exalow.main.entities.Team;
+import fr.exalow.main.utils.SaveLoader;
+
 public class Game {
 
-    public Game() {
+    public Game(SaveLoader save) {
 
     }
 
@@ -16,6 +19,10 @@ public class Game {
 
     public boolean hasWinner() {
         return false;
+    }
+
+    public Team getWinner() {
+        return null;
     }
 
     private long getVillagerNumber() {
