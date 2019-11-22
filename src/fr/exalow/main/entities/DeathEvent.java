@@ -13,11 +13,11 @@ public class DeathEvent {
     }
 
     public Player getPlayer() {
-        return null;
+        return player;
     }
 
     public String getDay() {
-        return "";
+        return day;
     }
 
     @Override

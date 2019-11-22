@@ -8,7 +8,8 @@ public class Player {
     private Role role;
 
     public Player(String name, Role role) {
-
+        this.name = name;
+        this.role = role;
     }
 
     public void vote() {
@@ -20,14 +21,14 @@ public class Player {
     }
 
     public String getName() {
-        return "";
+        return name;
     }
 
     public Role getRole() {
-        return null;
+        return role;
     }
 
     public Team getTeam() {
-        return null;
+        return role.getTeam();
     }
 }
