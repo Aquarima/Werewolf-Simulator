@@ -15,12 +15,16 @@ public class Player {
         this.role = role;
     }
 
-    public void vote() {
-        this.role.vote();
+    public void vote(Game game) {
+        this.role.vote(game);
     }
 
     public void useAbility() {
-        this.role.useAbility();
+        this.role.useAbility(game.getDeathManager());
+    }
+
+    public void onDeath() {
+
     }
 
     public String getName() {
