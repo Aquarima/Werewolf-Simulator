@@ -23,8 +23,8 @@ public class Player {
         this.role.useAbility(game.getDeathManager());
     }
 
-    public void onDeath() {
-
+    public void printDeathMessage() {
+        System.out.println(name + " est mort, Il était " + role + " !");
     }
 
     public String getName() {
@@ -41,6 +41,6 @@ public class Player {
 
     @Override
     public String toString() {
-        return "Name : " + name + " -  Role " + role;
+        return "Name : " + name + " -  Role : " + role;
     }
 }
