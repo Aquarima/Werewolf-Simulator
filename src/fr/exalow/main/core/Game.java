@@ -1,6 +1,5 @@
 package fr.exalow.main.core;
 
-import fr.exalow.main.entities.DeathEvent;
 import fr.exalow.main.entities.Player;
 import fr.exalow.main.entities.Team;
 import fr.exalow.main.manager.DeathManager;
@@ -17,7 +16,7 @@ public class Game {
 
     public Game(SaveLoader save) {
 
-        final Map<String, Double> dataSave = new HashMap<>();
+        final Map<String, Double> dataSave = new SaveLoader().loadDataSave();
         final PseudoGenerator pg = new PseudoGenerator();
 
         for (String element : dataSave.keySet()) {
@@ -28,8 +27,8 @@ public class Game {
     }
 
     public void update(String day) {
-        for (DeathEvent event : deathManager.getLastDeaths(day)) {
-            this.playerList.remove(event.getPlayer());
+        for (Player player : deathManager.getLastDeaths(day)) {
+            this.playerList.remove(player);
         }
     }
 

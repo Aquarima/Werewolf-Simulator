@@ -24,9 +24,10 @@ public class DeathManager {
         }
     }
 
-    public List<DeathEvent> getLastDeaths(String day) {
+    public List<Player> getLastDeaths(String day) {
         return deaths.stream()
-                .filter((x) -> x.getDay() == day)
+                .filter((x) -> x.getDay().equals(day))
+                .map((x) -> x.getPlayer())
                 .collect(Collectors.toList());
     }
 
