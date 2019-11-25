@@ -14,7 +14,7 @@ public class Villager implements Role {
 
     @Override
     public Player vote(Game game) {
-        return null;
+        return game.getRandomPlayer();
     }
 
     @Override
