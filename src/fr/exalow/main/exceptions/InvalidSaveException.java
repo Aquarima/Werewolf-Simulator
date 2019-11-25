@@ -1,8 +1,8 @@
 package fr.exalow.main.exceptions;
 
-public class InvalidSaveException {
+public class InvalidSaveException extends Exception{
 
-    public InvalidSaveException() {
-        super();
+    public InvalidSaveException(String str) {
+        super(str);
     }
 }
