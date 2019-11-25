@@ -25,4 +25,9 @@ public class Werewolf implements Role {
     public void useAbility(DeathManager manager) {
         // Doesn't have ability
     }
+
+    @Override
+    public String toString() {
+        return "Loup-Garou";
+    }
 }

@@ -12,4 +12,5 @@ public interface Role {
     Player vote(Game game);
 
     void useAbility(DeathManager manager);
+
 }

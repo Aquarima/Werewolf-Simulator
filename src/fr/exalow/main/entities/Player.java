@@ -38,4 +38,9 @@ public class Player {
     public Team getTeam() {
         return this.role.getTeam();
     }
+
+    @Override
+    public String toString() {
+        return "Name : " + name + " -  Role " + role;
+    }
 }

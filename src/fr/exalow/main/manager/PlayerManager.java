@@ -9,18 +9,21 @@ import java.util.List;
 
 public class PlayerManager {
 
-    public static Player getPlayerByRole(List<Player> playerlist, Role role) {
+    public static Player getPlayerByRole(List<Player> playerList, Role role) {
+        for (Player player : playerList) {
+            if (player.getRole() == role) return player;
+        }
         return null;
     }
 
-    public static Role getInstanceFrom(String role) {
+    public static Role getRoleFromString(String role) {
         switch (role) {
             case "VILLAGER":
                 return new Villager();
             case "WEREWOLF":
                 return new Werewolf();
             default:
-                throw new RuntimeException("Name not found !");
+                throw new RuntimeException("Role not found !");
         }
     }
 }

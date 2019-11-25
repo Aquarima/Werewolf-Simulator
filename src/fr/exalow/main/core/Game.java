@@ -21,7 +21,7 @@ public class Game {
 
         for (String element : dataSave.keySet()) {
             for (int i = 0; i < dataSave.get(element); i++) {
-                playerList.add(new Player(this, pg.getRandomName(), PlayerManager.getInstanceFrom(element)));
+                playerList.add(new Player(this, pg.getRandomName(), PlayerManager.getRoleFromString(element)));
             }
         }
     }
@@ -59,5 +59,9 @@ public class Game {
 
     public DeathManager getDeathManager() {
         return deathManager;
+    }
+
+    protected List<Player> getPlayerList() {
+        return playerList;
     }
 }
