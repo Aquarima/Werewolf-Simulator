@@ -1,4 +1,4 @@
-package com.exalow.main.utils;
+package fr.exalow.main.utils;
 
 import java.io.*;
 

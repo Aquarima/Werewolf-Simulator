@@ -1,13 +1,16 @@
 package fr.exalow.main.entities;
 
+import fr.exalow.main.core.Game;
 import fr.exalow.main.roles.Role;
 
 public class Player {
 
+    private Game game;
     private String name;
     private Role role;
 
-    public Player(String name, Role role) {
+    public Player(Game game, String name, Role role) {
+        this.game = game;
         this.name = name;
         this.role = role;
     }

@@ -22,6 +22,6 @@ public class DeathEvent {
 
     @Override
     public String toString() {
-        return "";
+        return day + " " + player.getName() + " [" + player.getRole() + "] " + reason;
     }
 }
