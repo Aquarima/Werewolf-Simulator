@@ -34,7 +34,7 @@ public class DeathManager {
     public void writeElements() {
         try {
             final File[] elements = new File("src/games/").listFiles();
-            final BufferedWriter writer = new BufferedWriter(new FileWriter("src/games/game " + elements.length + 1));
+            final BufferedWriter writer = new BufferedWriter(new FileWriter("src/games/game " + (elements.length + 1)));
 
             for (DeathEvent death : deaths) {
                 writer.write(death.toString() + "\n");
