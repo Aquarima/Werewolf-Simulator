@@ -29,10 +29,9 @@ public class Simulator {
 
     private void day() {
 
-        String day = "[Jour " + cycle + "]";
-        System.out.println("\n" + day + "\n");
+        System.out.println("\n[Jour + " + cycle + "]\n");
 
-        for (Player player : deathManager.getLastDeaths("[Nuit " + (cycle - 1) + "]")) {
+        for (Player player : deathManager.getLastDeaths(day)) {
             player.printDeathMessage();
         }
 
