@@ -24,7 +24,7 @@ public class Player {
     }
 
     public void printDeathMessage() {
-        System.out.println(name + " est mort, Il était " + role + " !");
+        System.out.println("\n" + name + " est mort, Il était " + role + " !");
     }
 
     public String getName() {

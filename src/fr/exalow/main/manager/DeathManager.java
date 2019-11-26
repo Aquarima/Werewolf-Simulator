@@ -12,11 +12,11 @@ public class DeathManager {
 
     private List<DeathEvent> deaths = new LinkedList<>();
 
-    public void registerDeathEvent(DeathEvent death) {
+    public void registerDeath(DeathEvent death) {
         this.deaths.add(death);
     }
 
-    public void removeDeathEvent(Player player) {
+    public void unregisterDeath(Player player) {
         for (DeathEvent death : deaths) {
             if (death.getPlayer() == player) {
                 this.deaths.remove(death);
@@ -34,10 +34,10 @@ public class DeathManager {
     public void writeElements() {
         try {
             final File[] elements = new File("src/games/").listFiles();
-            final BufferedWriter writer = new BufferedWriter(new FileWriter("game " + elements.length));
+            final BufferedWriter writer = new BufferedWriter(new FileWriter("src/games/game " + elements.length + 1));
 
             for (DeathEvent death : deaths) {
-                writer.write(death.toString());
+                writer.write(death.toString() + "\n");
             }
 
             writer.close();
