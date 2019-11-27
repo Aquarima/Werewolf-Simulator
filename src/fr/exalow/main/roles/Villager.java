@@ -3,7 +3,6 @@ package fr.exalow.main.roles;
 import fr.exalow.main.core.Game;
 import fr.exalow.main.entities.Player;
 import fr.exalow.main.entities.Team;
-import fr.exalow.main.manager.DeathManager;
 
 public class Villager implements Role {
 
@@ -18,7 +17,7 @@ public class Villager implements Role {
     }
 
     @Override
-    public void useAbility(DeathManager manager) {
+    public void useAbility(Game game) {
         // Doesn't have ability
     }
 

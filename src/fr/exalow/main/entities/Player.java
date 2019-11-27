@@ -8,6 +8,7 @@ public class Player {
     private Game game;
     private String name;
     private Role role;
+    private boolean isDead = false;
 
     public Player(Game game, String name, Role role) {
         this.game = game;
@@ -20,11 +21,19 @@ public class Player {
     }
 
     public void useAbility() {
-        this.role.useAbility(game.getDeathManager());
+        this.role.useAbility(game);
     }
 
     public void printDeathMessage() {
-        System.out.println("\n" + name + " est mort, Il était " + role + " !");
+        System.out.println(name + " est mort, Il était " + role + " !");
+    }
+
+    public void isDead(boolean bool) {
+        this.isDead = bool;
+    }
+
+    public boolean isDead() {
+        return isDead;
     }
 
     public String getName() {
@@ -41,6 +50,6 @@ public class Player {
 
     @Override
     public String toString() {
-        return "Name : " + name + " -  Role : " + role;
+        return name + " (" + role + ")";
     }
 }

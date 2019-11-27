@@ -2,7 +2,6 @@ package fr.exalow.main.core;
 
 import fr.exalow.main.entities.Player;
 import fr.exalow.main.entities.Team;
-import fr.exalow.main.manager.DeathManager;
 import fr.exalow.main.manager.PlayerManager;
 import fr.exalow.main.utils.PseudoGenerator;
 import fr.exalow.main.utils.SaveLoader;
@@ -11,8 +10,7 @@ import java.util.*;
 
 public class Game {
 
-    private DeathManager deathManager = new DeathManager();
-    private List<Player> playerList = new LinkedList<>();
+    private PlayerManager manager = new PlayerManager();
 
     public Game(SaveLoader save) {
 
@@ -21,47 +19,31 @@ public class Game {
 
         for (String element : dataSave.keySet()) {
             for (int i = 0; i < dataSave.get(element); i++) {
-                playerList.add(new Player(this, pg.getRandomName(), PlayerManager.getRoleFromString(element)));
+                manager.addPlayer(new Player(this, pg.getRandomName(), manager.getRoleFromString(element)));
             }
         }
     }
 
-    public void update(String day) {
-        for (Player player : deathManager.getLastDeaths(day)) {
-            this.playerList.remove(player);
+    public void update() {
+        for (Player player : manager.getPlayerDeath()) {
+            if (player.isDead()) manager.removePlayer(player);
         }
     }
 
     public boolean hasWinner() {
-        return this.getVillagerNumber() == 0 || this.getWerewolfNumber() == 0;
+        return manager.getVillagerNumber() == 0 || manager.getWerewolfNumber() == 0;
     }
 
     public Team getWinner() {
         if (!hasWinner()) return null;
-        return playerList.get(0).getTeam();
-    }
-
-    private long getVillagerNumber() {
-        return playerList.stream()
-                .filter((x) -> x.getTeam() == Team.VILLAGE)
-                .count();
-    }
-
-    private long getWerewolfNumber() {
-        return playerList.stream()
-                .filter((x) -> x.getTeam() == Team.WEREWOLVES)
-                .count();
+        return manager.getPlayerList().get(0).getTeam();
     }
 
     public Player getRandomPlayer() {
-        return playerList.get(new Random().nextInt(playerList.size()));
+        return manager.getPlayerList().get(new Random().nextInt(manager.getPlayerList().size()));
     }
 
-    public DeathManager getDeathManager() {
-        return deathManager;
-    }
-
-    protected List<Player> getPlayerList() {
-        return playerList;
+    public PlayerManager getManager() {
+        return manager;
     }
 }
