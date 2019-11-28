@@ -1,4 +1,4 @@
-package fr.exalow.main.entities;
+﻿package fr.exalow.main.entities;
 
 import fr.exalow.main.core.Game;
 import fr.exalow.main.roles.Role;
@@ -25,7 +25,7 @@ public class Player {
     }
 
     public void printDeathMessage() {
-        System.out.println(name + " est mort, Il était " + role + " !");
+        System.out.println(name + " est mort, Qui était " + role + " !");
     }
 
     public void isDead(boolean bool) {
