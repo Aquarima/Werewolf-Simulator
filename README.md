@@ -3,5 +3,4 @@ A Werewolf game simulator.
 
 # What's new ?
 
-- https://imgur.com/XuUJ8TR
-https://imgur.com/d7bOFGI
+- 
