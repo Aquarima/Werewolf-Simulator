@@ -8,7 +8,7 @@ public class Player {
     private Game game;
     private String name;
     private Role role;
-    private boolean isDead = false;
+    private boolean isAlive = false;
 
     public Player(Game game, String name, Role role) {
         this.game = game;
@@ -28,12 +28,12 @@ public class Player {
         System.out.println(name + " est mort, Qui était " + role + " !");
     }
 
-    public void isDead(boolean bool) {
-        this.isDead = bool;
+    public void setAlive(boolean bool) {
+        this.isAlive = bool;
     }
 
-    public boolean isDead() {
-        return isDead;
+    public boolean isAlive() {
+        return isAlive;
     }
 
     public String getName() {

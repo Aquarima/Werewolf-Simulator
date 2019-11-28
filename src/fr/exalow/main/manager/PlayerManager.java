@@ -24,7 +24,7 @@ public class PlayerManager {
 
     public List<Player> getPlayerDeath() {
         return this.playerList.stream()
-                .filter((player) -> player.isDead())
+                .filter((player) -> player.isAlive())
                 .collect(Collectors.toList());
     }
 

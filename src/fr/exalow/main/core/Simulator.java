@@ -36,7 +36,7 @@ public class Simulator {
     public void onNight(int cycle) {
         System.out.println("\n[Nuit " + cycle + "]\n");
         System.out.println("La Nuit tombe, les loups vont choisir leurs victime...");
-        game.getRandomPlayer().isDead(true);
+        game.getRandomPlayer().setAlive(true);
     }
 
     private void stop() {

@@ -26,7 +26,7 @@ public class Game {
 
     public void update() {
         for (Player player : manager.getPlayerDeath()) {
-            if (player.isDead()) manager.removePlayer(player);
+            if (!player.isAlive()) manager.removePlayer(player);
         }
     }
 
