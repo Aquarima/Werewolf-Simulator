@@ -3,9 +3,6 @@ package fr.exalow.main.utils;
 import fr.exalow.main.entities.Player;
 
 import java.util.*;
-import java.util.function.BinaryOperator;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 public class VoteHandler {
 
@@ -15,13 +12,23 @@ public class VoteHandler {
         this.votes.add(player);
     }
 
-    public Optional<Player> getResult() {
-        return votes.stream()
-                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
-                .entrySet()
-                .stream()
-                .max(Comparator.comparing(Map.Entry::getValue))
-                .map(Map.Entry::getKey);
+    public Player getResult() {
+
+        Map<Player, Integer> results = new HashMap<>();
+
+        for (Player player : votes) {
+            results.put(player, results.get(player) + 1);
+        }
+
+        Player moreVotedPlayer = null;
+
+        for (Player player : results.keySet()) {
+            if (results.get(player) > results.get(moreVotedPlayer)) {
+                moreVotedPlayer = player;
+            }
+        }
+
+        return moreVotedPlayer;
     }
 
     public void reset() {

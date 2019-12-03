@@ -2,6 +2,7 @@ package fr.exalow.main.core;
 
 import fr.exalow.main.entities.Player;
 import fr.exalow.main.utils.SaveLoader;
+import fr.exalow.main.utils.VoteHandler;
 
 public class Simulator {
 

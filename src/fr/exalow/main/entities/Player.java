@@ -1,4 +1,4 @@
-﻿package fr.exalow.main.entities;
+package fr.exalow.main.entities;
 
 import fr.exalow.main.core.Game;
 import fr.exalow.main.roles.Role;
@@ -16,12 +16,12 @@ public class Player {
         this.role = role;
     }
 
-    public void vote(Game game) {
-        this.role.vote(game);
+    public Player vote(Game game) {
+        return role.vote(game);
     }
 
     public void useAbility() {
-        this.role.useAbility(game);
+        role.useAbility(game);
     }
 
     public void printDeathMessage() {

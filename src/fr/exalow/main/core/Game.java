@@ -6,7 +6,8 @@ import fr.exalow.main.manager.PlayerManager;
 import fr.exalow.main.utils.PseudoGenerator;
 import fr.exalow.main.utils.SaveLoader;
 
-import java.util.*;
+import java.util.Map;
+import java.util.Random;
 
 public class Game {
 
